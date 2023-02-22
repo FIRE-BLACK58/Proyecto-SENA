@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Proyecto.Models.Torneo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Torneos</h1>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <h3>@Html.DisplayNameFor(model => model.Municipio.Nombre)</h3>
+        </th>
+        <th>
+            <h3>@Html.DisplayNameFor(model => model.Nombre)</h3>
+        </th>
+        <th>
+            <h3>@Html.DisplayNameFor(model => model.Categoria)</h3>
+        </th>
+        <th>
+            <h3>@Html.DisplayNameFor(model => model.FechaInicial)</h3>
+        </th>
+        <th>
+            <h3>@Html.DisplayNameFor(model => model.FechaFinal)</h3>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Municipio.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaInicial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaFinal)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.TorneoId }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.TorneoId }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.TorneoId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
